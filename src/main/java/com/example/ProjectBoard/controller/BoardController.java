@@ -22,9 +22,12 @@ public class BoardController {
 
     @GetMapping("/api/board")//모든 글 조회
     public List<BoardDto> getList(){
+
         return boardservice.getList();
 
     }
+
+
 
 
     @GetMapping("/api/board/{id}") //하나의 글 조회

@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor(access =  AccessLevel.PROTECTED)//모든 필드 값을 파라미터로 받는 생성자를 만듬 즉 클래스에 존재하는 모든 필드에 대한 생성자를 자동으로 생성해줍니다.
 @Getter//접근 설정
 
-public class Board {
+public class Board extends  Timestamped{
 
     @Id//테이블의 주키(primary key) 역할을 한다는 것을 나타낸다.
     @GeneratedValue(strategy =  GenerationType.IDENTITY) //@GeneratedValue는 주키의 값을 위한 자동 생성 전략을 명시
