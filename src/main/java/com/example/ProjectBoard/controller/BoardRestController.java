@@ -24,10 +24,7 @@ public class BoardRestController {
     public List<BoardDto> getList(){
 
         return boardservice.getList();
-
     }
-
-
 
 
     @GetMapping("/api/board/{id}") //하나의 글 조회

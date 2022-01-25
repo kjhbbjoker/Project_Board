@@ -26,7 +26,7 @@ public class Board extends  Timestamped{
     @Column(nullable = false, columnDefinition = "varchar(20)")
     private  String title;
 
-    @Column(name = "user_name", nullable = false, columnDefinition = "varchar(20)" )
+    @Column(name = "username", nullable = false, columnDefinition = "varchar(20)" )
     private  String username;
 
     @Column(nullable = false, columnDefinition = "varchar(100)" )
