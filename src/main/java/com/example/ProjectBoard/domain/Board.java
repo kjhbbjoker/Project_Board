@@ -35,7 +35,7 @@ public class Board extends  Timestamped{
 
 
     @Builder //빌더 패턴
-    public Board(String title, String username, String content, LocalDateTime modifiedAt){
+    public Board(Integer id ,String title, String username, String content, LocalDateTime modifiedAt){
         this.title = title;
         this.username = username;
         this.content = content;
@@ -44,6 +44,7 @@ public class Board extends  Timestamped{
 
     public BoardDto toDto(){  //원래 도메인을 DTO로 변환
         return BoardDto.builder()
+                .id(this.id)
                 .title(this.title)
                 .username(this.username)
                 .content(this.content)
