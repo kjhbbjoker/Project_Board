@@ -2,7 +2,6 @@ package com.example.ProjectBoard.domain;
 
 import com.example.ProjectBoard.dto.BoardDto;
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
@@ -35,11 +34,8 @@ public class Board extends  Timestamped{
 
 
 
-    @CreatedDate // 생성일자임을 나타냅니다.
-    private LocalDateTime createdAt;
-
     @Builder //빌더 패턴
-    public Board(String title, String username, String content){
+    public Board(String title, String username, String content, LocalDateTime modifiedAt){
         this.title = title;
         this.username = username;
         this.content = content;
@@ -51,6 +47,7 @@ public class Board extends  Timestamped{
                 .title(this.title)
                 .username(this.username)
                 .content(this.content)
+                .createdAt((this.getCreatedAt()))
                 .build();
     }
 

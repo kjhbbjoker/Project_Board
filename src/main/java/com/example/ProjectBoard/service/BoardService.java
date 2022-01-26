@@ -22,7 +22,7 @@ public class BoardService {
 
     public List<BoardDto> getList(){ //모든 글을 조회
 
-        return boardrepository.findAllByOrderByModifiedAtDesc().stream().map(board -> board.toDto())//도메인 데이터를 dto로 변환
+        return boardrepository.findAllByOrderByCreatedAtDesc().stream().map(board -> board.toDto())//도메인 데이터를 dto로 변환
                 .collect(Collectors.toList());
 
     }
