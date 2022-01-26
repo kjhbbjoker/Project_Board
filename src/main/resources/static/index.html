@@ -287,7 +287,6 @@
             $(`#${id}-editarea`).show();
             $(`#${id}-submit`).show();
             $(`#${id}-delete`).show();
-
             $(`#${id}-content`).hide();
             $(`#${id}-edit`).hide();
         }
@@ -329,11 +328,27 @@
                 type: "GET",
                 url: `/api/board/${id}`,//id값에 변수 값 저장
                 success: function (response) {
-                    debugger
 
-                },
-            });
+                    let board = response;
+                    let id = board["id"];
+                    let username = board["username"];
+                    let title = board["title"];
+                    let content = board["content"];
+                    let createdAt = board["created_at"];
+
+                    let temp_html = `<div class="card">
+                                    <div class="card-body">
+                                        <a target="_blank" class="card-title"> <p> </p> ${id}, ${username}, ${title}</a>
+                                        <p class="card-text">${content}</p>
+                                        <p class="card-text comment1">${content}</p>
+                                        <p class="card-text comment2">${createdAt}</p>
+                                    </div>
+                                </div>`
+                    $('#cards-box').append(temp_html)
+                }
+            })
         }
+
 
 
 
@@ -346,7 +361,7 @@
                 success: function (response) {
                     for (let i = 0; i < response.length; i++) {
                         let board = response[i];
-                        let id = board["board_id"];
+                        let id = board["id"];
                         let username = board["username"];
                         let title = board["title"];
                         let content = board["content"];
@@ -392,8 +407,7 @@
         </div>
         <!-- 버튼 영역-->
         <div class="footer">
-
-            <img id="${id}-delete" class="icon-delete" src="images/delete.png" alt="" onclick="find()">
+            <button onclick="find(${id})">상세보기2</button>
 
         </div>
     </div>`;
@@ -410,9 +424,9 @@
 <div class="background-body"></div>
 <div class="wrap">
     <div class="header">
-        <h2>Timeline Service</h2>
+        <h2>메모장</h2>
         <p>
-            공유하고 싶은 소식을 입력해주세요. 24시간이 지난 뒤에는 사라집니다.
+            공유하고 싶은 소식을 입력해주세요.
         </p>
     </div>
     <div class="area-write">
@@ -494,7 +508,7 @@
     let temp_htmls;
     const modal = document.getElementById("modal");
 
-
+    //이미지가 눌렸을때의 모달 실행
     // 음식 카드의 img를 눌렀을때 인자로 넣었던 file이름과 닉네임을 인자로 받는다.
     function btn_modal(contents) {
         console.log("모달 눌림");
